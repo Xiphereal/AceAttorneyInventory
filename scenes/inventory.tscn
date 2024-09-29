@@ -92,7 +92,6 @@ text = ">"
 [node name="PagesNumber" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_0q0bn")
-text = "1/2"
 label_settings = SubResource("LabelSettings_4c3so")
 horizontal_alignment = 1
 vertical_alignment = 1
