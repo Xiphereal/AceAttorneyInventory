@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://715tartby11i"]
+[gd_scene load_steps=6 format=3 uid="uid://715tartby11i"]
+
+[ext_resource type="Script" path="res://scenes/inventory.gd" id="1_nb056"]
 
 [sub_resource type="Theme" id="Theme_x7lis"]
 Label/font_sizes/font_size = 23
@@ -9,6 +11,9 @@ Label/font_sizes/font_size = 30
 [sub_resource type="LabelSettings" id="LabelSettings_f0hrc"]
 font_size = 40
 
+[sub_resource type="LabelSettings" id="LabelSettings_4c3so"]
+font_size = 12
+
 [node name="Inventory" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -17,6 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_x7lis")
+script = ExtResource("1_nb056")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -43,7 +49,18 @@ label_settings = SubResource("LabelSettings_f0hrc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 55
+alignment = 1
+
+[node name="Previous" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+disabled = true
+text = "<"
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -51,18 +68,33 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 2
 
-[node name="Panel" type="Panel" parent="PanelContainer/VBoxContainer/GridContainer"]
+[node name="Panel" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="PanelContainer/VBoxContainer/GridContainer"]
+[node name="Panel2" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="Panel3" type="Panel" parent="PanelContainer/VBoxContainer/GridContainer"]
+[node name="Panel3" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="Panel4" type="Panel" parent="PanelContainer/VBoxContainer/GridContainer"]
+[node name="Panel4" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+
+[node name="Next" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = ">"
+
+[node name="PagesNumber" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_0q0bn")
+text = "1/2"
+label_settings = SubResource("LabelSettings_4c3so")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]
