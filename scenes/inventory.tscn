@@ -97,4 +97,5 @@ label_settings = SubResource("LabelSettings_4c3so")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Previous" to="." method="_on_previous_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]
