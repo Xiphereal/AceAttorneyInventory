@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://715tartby11i"]
+[gd_scene load_steps=11 format=3 uid="uid://715tartby11i"]
 
 [ext_resource type="Script" path="res://scenes/inventory.gd" id="1_nb056"]
 [ext_resource type="Texture2D" uid="uid://bhdg42skfhwfv" path="res://assets/placeholders 2D/placeholder1.png" id="2_b0g4s"]
 [ext_resource type="Texture2D" uid="uid://cjliqbbgpyff7" path="res://assets/placeholders 2D/placeholder2.jpg" id="3_rky7m"]
 [ext_resource type="Texture2D" uid="uid://cdyj3fb6b3gyj" path="res://assets/placeholders 2D/placeholder3.png" id="4_h4cj0"]
 [ext_resource type="Texture2D" uid="uid://6tqxjjpdoavp" path="res://assets/placeholders 2D/placeholder4.png" id="5_r20k8"]
+[ext_resource type="Script" path="res://scenes/object_inspector.gd" id="6_kmh6h"]
 
 [sub_resource type="Theme" id="Theme_x7lis"]
 Label/font_sizes/font_size = 23
@@ -111,24 +112,27 @@ label_settings = SubResource("LabelSettings_4c3so")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ObjectInspector" type="PopupPanel" parent="."]
+[node name="ItemInspector" type="PopupPanel" parent="."]
 initial_position = 2
-size = Vector2i(100, 103)
+size = Vector2i(296, 100)
+visible = true
+script = ExtResource("6_kmh6h")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ObjectInspector"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ItemInspector"]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 96.0
-offset_bottom = 99.0
+offset_right = 292.0
+offset_bottom = 96.0
 
-[node name="TextureRect" type="TextureRect" parent="ObjectInspector/VBoxContainer"]
-custom_minimum_size = Vector2(60, 60)
+[node name="Label" type="Label" parent="ItemInspector/VBoxContainer"]
 layout_mode = 2
-stretch_mode = 4
+text = "asdfasdgdasfasdfasdfasdf"
 
-[node name="Button" type="Button" parent="ObjectInspector/VBoxContainer"]
+[node name="Button" type="Button" parent="ItemInspector/VBoxContainer"]
 layout_mode = 2
 text = "Close"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Previous" to="." method="_on_previous_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Panel" to="ItemInspector" method="_on_item_inspected"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="ItemInspector/VBoxContainer/Button" to="ItemInspector" method="_on_close_pressed"]
