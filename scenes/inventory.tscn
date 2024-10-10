@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://715tartby11i"]
+[gd_scene load_steps=12 format=3 uid="uid://715tartby11i"]
 
 [ext_resource type="Script" path="res://scenes/inventory.gd" id="1_nb056"]
 [ext_resource type="Texture2D" uid="uid://bhdg42skfhwfv" path="res://assets/placeholders 2D/placeholder1.png" id="2_b0g4s"]
+[ext_resource type="Script" path="res://scenes/item.gd" id="3_auxlu"]
 [ext_resource type="Texture2D" uid="uid://cjliqbbgpyff7" path="res://assets/placeholders 2D/placeholder2.jpg" id="3_rky7m"]
 [ext_resource type="Texture2D" uid="uid://cdyj3fb6b3gyj" path="res://assets/placeholders 2D/placeholder3.png" id="4_h4cj0"]
 [ext_resource type="Texture2D" uid="uid://6tqxjjpdoavp" path="res://assets/placeholders 2D/placeholder4.png" id="5_r20k8"]
@@ -74,29 +75,33 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 2
 
-[node name="Panel" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Item1" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 icon = ExtResource("2_b0g4s")
 expand_icon = true
+script = ExtResource("3_auxlu")
 
-[node name="Panel2" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Item2" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 icon = ExtResource("3_rky7m")
 expand_icon = true
+script = ExtResource("3_auxlu")
 
-[node name="Panel3" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Item3" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 icon = ExtResource("4_h4cj0")
 expand_icon = true
+script = ExtResource("3_auxlu")
 
-[node name="Panel4" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Item4" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 icon = ExtResource("5_r20k8")
 expand_icon = true
+script = ExtResource("3_auxlu")
 
 [node name="Next" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -124,15 +129,24 @@ offset_top = 4.0
 offset_right = 292.0
 offset_bottom = 96.0
 
-[node name="Label" type="Label" parent="ItemInspector/VBoxContainer"]
+[node name="ItemName" type="Label" parent="ItemInspector/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "asdfasdgdasfasdfasdfasdf"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="ItemInspector/VBoxContainer"]
 layout_mode = 2
 text = "Close"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Previous" to="." method="_on_previous_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Panel" to="ItemInspector" method="_on_item_inspected"]
+[connection signal="item_inspected" from="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Item1" to="ItemInspector" method="_on_item_inspected"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Item1" to="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Item1" method="_on_pressed"]
+[connection signal="item_inspected" from="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Item2" to="ItemInspector" method="_on_item_inspected"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Item2" to="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Item2" method="_on_pressed"]
+[connection signal="item_inspected" from="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Item3" to="ItemInspector" method="_on_item_inspected"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Item3" to="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Item3" method="_on_pressed"]
+[connection signal="item_inspected" from="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Item4" to="ItemInspector" method="_on_item_inspected"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Item4" to="PanelContainer/VBoxContainer/HBoxContainer/GridContainer/Item4" method="_on_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="ItemInspector/VBoxContainer/Button" to="ItemInspector" method="_on_close_pressed"]
