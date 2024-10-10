@@ -15,7 +15,6 @@ func _process(delta):
 func _on_previous_pressed() -> void:
 	current_page -= 1
 	
-	
 	previous_button.disabled = true
 	next_button.disabled = false
 
