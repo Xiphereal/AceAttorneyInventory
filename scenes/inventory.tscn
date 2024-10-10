@@ -55,6 +55,7 @@ theme_override_constants/separation = 55
 alignment = 1
 
 [node name="Previous" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 disabled = true
@@ -85,11 +86,13 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Next" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = ">"
 
 [node name="PagesNumber" type="Label" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = SubResource("Theme_0q0bn")
 label_settings = SubResource("LabelSettings_4c3so")

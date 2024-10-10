@@ -1,9 +1,9 @@
 extends Control
 
 var current_page := 1
-@onready var previous_button := $PanelContainer/VBoxContainer/HBoxContainer/Previous
-@onready var next_button := $PanelContainer/VBoxContainer/HBoxContainer/Next
-@onready var page_number := $PanelContainer/VBoxContainer/PagesNumber
+@onready var previous_button := %Previous
+@onready var next_button := %Next
+@onready var page_number := %PagesNumber
 
 func _ready() -> void:
 	previous_button.disabled = true
